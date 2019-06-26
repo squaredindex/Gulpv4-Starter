@@ -1,9 +1,5 @@
 @import "imports/variables";
 
-::selection {
-    background: rgba(255, 255, 255, 0.5);
-}
-
 body {
     margin: auto;
     background: $gulp-red;
