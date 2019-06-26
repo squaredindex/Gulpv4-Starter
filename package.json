@@ -1,0 +1,16 @@
+{
+  "name": "sitebakery-gulp-starter",
+  "version": "0.0.1",
+  "description": "A simple Gulp setup to add to or use as a starter for new projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael Levett | SiteBakery",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2"
+  }
+}
