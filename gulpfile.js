@@ -29,7 +29,7 @@ const browserSync = require("browser-sync").create();
    STYLES
    ========================================================================== */
 
-// Compile SCSS info CSS
+// Compile SCSS into CSS
 function style() {
     return (
         gulp
@@ -62,7 +62,7 @@ function build() {
     );
 }
 
-// Watch for changes and update automatically
+// Watch for changes & update automatically
 function watch() {
     browserSync.init({
         server: {
