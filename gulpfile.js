@@ -21,7 +21,8 @@
 
 const gulp = require("gulp");
 const sass = require("gulp-sass");
-const purify = require("gulp-purify-css");
+// const purify = require("gulp-purify-css");
+const purgecss = require("gulp-purgecss");
 const cssnano = require("gulp-cssnano");
 const browserSync = require("browser-sync").create();
 
@@ -50,7 +51,14 @@ function build() {
             // 1. Find my CSS file(s) to optimise:
             .src("./dist/css/**/*.css")
             // 2. Remove unused CSS:
-            .pipe(purify(["./src/js/**/*.js", "./**/*.html"]))
+            .pipe(
+                purgecss({
+                    content: ["./**/*.html"]
+                })
+            )
+
+            // .pipe(purify(["./src/js/**/*.js", "./**/*.html"]))
+
             // 3. Minify files:
             .pipe(cssnano())
             // 4. Replace original files with minified:
