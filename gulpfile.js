@@ -21,7 +21,6 @@
 
 const gulp = require("gulp");
 const sass = require("gulp-sass");
-// const purify = require("gulp-purify-css");
 const purgecss = require("gulp-purgecss");
 const cssnano = require("gulp-cssnano");
 const browserSync = require("browser-sync").create();
@@ -56,9 +55,6 @@ function build() {
                     content: ["./**/*.html"]
                 })
             )
-
-            // .pipe(purify(["./src/js/**/*.js", "./**/*.html"]))
-
             // 3. Minify files:
             .pipe(cssnano())
             // 4. Replace original files with minified:
