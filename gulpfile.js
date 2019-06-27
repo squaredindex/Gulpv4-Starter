@@ -21,6 +21,7 @@
 
 const gulp = require("gulp");
 const sass = require("gulp-sass");
+const cssnano = require("gulp-cssnano");
 const browserSync = require("browser-sync").create();
 
 /* ==========================================================================
@@ -42,6 +43,18 @@ function style() {
     );
 }
 
+function buildStyle() {
+    return (
+        gulp
+            // 1. Find my CSS file(s) to optimise:
+            .src("./dist/css/**/*.css")
+            // 2. Minify files:
+            .pipe(cssnano())
+            // 3. Replace original files with minified:
+            .pipe(gulp.dest("./dist/css"))
+    );
+}
+
 // Watch for changes and update automatically
 function watch() {
     browserSync.init({
@@ -55,4 +68,5 @@ function watch() {
 }
 
 exports.style = style;
+exports.buildStyle = buildStyle;
 exports.watch = watch;
