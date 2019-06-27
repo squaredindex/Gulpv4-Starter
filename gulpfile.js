@@ -21,6 +21,7 @@
 
 const gulp = require("gulp");
 const sass = require("gulp-sass");
+const purify = require("gulp-purify-css");
 const cssnano = require("gulp-cssnano");
 const browserSync = require("browser-sync").create();
 
@@ -43,14 +44,16 @@ function style() {
     );
 }
 
-function buildStyle() {
+function build() {
     return (
         gulp
             // 1. Find my CSS file(s) to optimise:
             .src("./dist/css/**/*.css")
-            // 2. Minify files:
+            // 2. Remove unused CSS:
+            .pipe(purify(["./src/js/**/*.js", "./**/*.html"]))
+            // 3. Minify files:
             .pipe(cssnano())
-            // 3. Replace original files with minified:
+            // 4. Replace original files with minified:
             .pipe(gulp.dest("./dist/css"))
     );
 }
@@ -68,5 +71,5 @@ function watch() {
 }
 
 exports.style = style;
-exports.buildStyle = buildStyle;
+exports.build = build;
 exports.watch = watch;
