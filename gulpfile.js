@@ -22,6 +22,7 @@
 const gulp = require("gulp");
 const sass = require("gulp-sass");
 const clean = require("gulp-clean");
+const rename = require("gulp-rename");
 const purgecss = require("gulp-purgecss");
 const cssnano = require("gulp-cssnano");
 const browserSync = require("browser-sync").create();
@@ -48,7 +49,7 @@ function style() {
 function build() {
     return (
         gulp
-            // 1. Find my CSS file(s) to optimise:
+            // 1. Find CSS file(s) to optimise:
             .src("./dist/css/**/*.css")
             // 2. Remove unused CSS:
             .pipe(
@@ -58,7 +59,13 @@ function build() {
             )
             // 3. Minify files:
             .pipe(cssnano())
-            // 4. Replace original files with minified:
+            // 4. Add '.min' suffix:
+            .pipe(
+                rename({
+                    suffix: ".min"
+                })
+            )
+            // 5. Replace original files with minified:
             .pipe(gulp.dest("./dist/css"))
     );
 }
