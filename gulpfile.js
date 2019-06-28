@@ -21,6 +21,7 @@
 
 const gulp = require("gulp");
 const sass = require("gulp-sass");
+const clean = require("gulp-clean");
 const purgecss = require("gulp-purgecss");
 const cssnano = require("gulp-cssnano");
 const browserSync = require("browser-sync").create();
@@ -62,6 +63,10 @@ function build() {
     );
 }
 
+/* ==========================================================================
+   UTILITY
+   ========================================================================== */
+
 // Watch for changes & update automatically
 function watch() {
     browserSync.init({
@@ -74,6 +79,12 @@ function watch() {
     gulp.watch("./**/*.html").on("change", browserSync.reload);
 }
 
+/* Remove all compiled files */
+function cleanDist() {
+    return gulp.src("dist", { allowEmpty: true }).pipe(clean());
+}
+
+exports.clean = cleanDist;
 exports.style = style;
 exports.build = build;
 exports.watch = watch;
