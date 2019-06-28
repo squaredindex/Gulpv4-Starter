@@ -51,6 +51,7 @@ function build() {
         gulp
             // 1. Find CSS file(s) to optimise:
             .src("./dist/css/**/*.css")
+
             // 2. Remove unused CSS:
             .pipe(
                 purgecss({
