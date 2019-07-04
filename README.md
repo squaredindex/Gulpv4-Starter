@@ -1,5 +1,5 @@
 # Gulp 4 Starter
-This is a basic starting point to for a project using Gulp 4. Nothing fancy just compling SCSS and watching file changes
+This is a basic starting point to for a project using Gulp 4. Nothing fancy just compiling SCSS and watching file changes
 to update the browser.
 
 ## Configuration References:
